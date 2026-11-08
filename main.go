@@ -24,9 +24,11 @@ import (
 	"slices"
 	"time"
 
+	"github.com/go-logr/logr"
 	slogmulti "github.com/samber/slog-multi"
 	kubeinformers "k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
+	"k8s.io/klog/v2"
 	"sigs.k8s.io/controller-runtime/pkg/client/config"
 	"sigs.k8s.io/controller-runtime/pkg/manager/signals"
 
@@ -100,6 +102,11 @@ func main() {
 		logger = logger.With(slog.String("app", "vault-secrets-reloader"))
 
 		slog.SetDefault(logger)
+
+		// Route client-go/klog output (API server warnings, reflector messages) through
+		// the app logger: klog info goes to stdout as INFO, klog errors stay ERROR.
+		// Without this klog writes plain lines to stderr, which are collected as errors.
+		klog.SetLogger(logr.FromSlogHandler(logger.Handler()))
 	}
 
 	// Handler for health checks

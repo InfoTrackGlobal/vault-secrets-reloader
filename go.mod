@@ -6,6 +6,7 @@ require (
 	github.com/bank-vaults/secrets-webhook v0.3.1
 	github.com/bank-vaults/vault-operator v1.23.4
 	github.com/bank-vaults/vault-sdk v0.11.2
+	github.com/go-logr/logr v1.4.3
 	github.com/hashicorp/vault/api v1.22.0
 	github.com/samber/slog-multi v1.7.1
 	github.com/stretchr/testify v1.11.1
@@ -39,7 +40,6 @@ require (
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/fxamacker/cbor/v2 v2.9.0 // indirect
 	github.com/go-jose/go-jose/v4 v4.1.3 // indirect
-	github.com/go-logr/logr v1.4.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v0.22.4 // indirect
 	github.com/go-openapi/jsonreference v0.21.4 // indirect
